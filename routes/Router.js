@@ -38,6 +38,14 @@ router.get('/generate-fake-product', (req, res, next) => {
 
     }
     res.redirect('/add-product');
+});
+
+
+
+//post....
+
+router.post('/add-product', (req, res) => {
+    res.send('sent the item')
 })
 
 
