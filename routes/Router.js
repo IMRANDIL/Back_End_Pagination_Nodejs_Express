@@ -67,7 +67,7 @@ router.get('/products/:page', (req, res, next) => {
     Product.find({}).skip((perPage * page) - perPage).limit(perPage).exec((err, result) => {
         Product.count((err, count) => {
             if (err) next(err);
-            res.render('product', {
+            res.render('products/products', {
                 result,
                 current: page,
                 pages: Math.ceil(count / perPage)
