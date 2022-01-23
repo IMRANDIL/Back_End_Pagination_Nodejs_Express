@@ -5,6 +5,7 @@ const db = require('../db/database');
 const faker = require('faker');
 
 const Product = require('../models/products');
+const { count } = require('../models/products');
 
 
 //get....
@@ -44,8 +45,37 @@ router.get('/generate-fake-product', (req, res, next) => {
 
 //post....
 
-router.post('/add-product', (req, res) => {
-    res.send('sent the item')
+router.post('/add-product', (req, res, next) => {
+    const product = new Product();
+    product.category = req.body.category;
+    product.name = req.body.name;
+    product.price = req.body.price;
+    product.cover = faker.image.image();
+
+    product.save(err => {
+        if (err) return next(err);
+        res.redirect('/add-product')
+    })
+});
+
+//get by page.....pagination...
+
+router.get('/products/:page', (req, res, next) => {
+    let perPage = 9;
+    let page = req.params.page || 1;
+
+    Product.find({}).skip((perPage * page) - perPage).limit(perPage).exec((err, result) => {
+        Product.count((err, count) => {
+            if (err) next(err);
+            res.render('product', {
+                result,
+                current: page,
+                pages: Math.ceil(count / perPage)
+
+            })
+        })
+    })
+
 })
 
 
