@@ -69,27 +69,58 @@
 
                                     <!-- Pages -->
 
+                                    <% let i=(Number(current)>5 ? Number(current) - 4 : 1) %>
 
-
-
-
-
-
-
-
-
-                                    <!-- Last Page -->
-                                    <% if(current===pages) { %>
-
-                                        <li class="page-item disabled">
-                                            <a href="#" class="page-link">Last Page</a>
-                                        </li>
-
-                                        <% } else{ %>
-                                            <li class="page-item">
-                                                <a href="/products/<%= pages %>" class="page-link">Last</a>
-                                            </li>
+                                        <% if(i !==1){ %>
+                                            <a href="#" class="page-link">...</a>
                                             <% } %>
+
+                                                <% for(; i <=(Number(current)+4) && i <=pages; i++){ %>
+
+                                                    <% if(i===current) {%>
+                                                        <li class="page-item">
+                                                            <a href="<%=i %>" class="page-link">
+                                                                <%=i %>
+                                                            </a>
+                                                        </li>
+                                                        <% }else{ %>
+
+
+                                                            <li class="page-item">
+                                                                <a href="/products/<%=i %>" class="page-link">
+                                                                    <%= i %>
+                                                                </a>
+                                                            </li>
+
+                                                            <% } %>
+
+                                                                <% if(i===Number(current)+ 4 && i< pages){%>
+
+                                                                    <li class="page-item">
+                                                                        <a href="#" class="page-link">...</a>
+                                                                    </li>
+
+                                                                    <% } %>
+
+
+                                                                        <% } %>
+
+
+
+                                                                            <!-- Last Page -->
+                                                                            <% if(current===pages) { %>
+
+                                                                                <li class="page-item disabled">
+                                                                                    <a href="#" class="page-link">Last
+                                                                                        Page</a>
+                                                                                </li>
+
+                                                                                <% } else{ %>
+                                                                                    <li class="page-item">
+                                                                                        <a href="/products/<%= pages %>"
+                                                                                            class="page-link">Last</a>
+                                                                                    </li>
+                                                                                    <% } %>
                     </ul>
                 </nav>
 
