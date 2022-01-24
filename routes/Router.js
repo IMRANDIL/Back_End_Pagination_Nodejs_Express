@@ -54,7 +54,7 @@ router.post('/add-product', (req, res, next) => {
 
     product.save(err => {
         if (err) return next(err);
-        res.redirect('/add-product')
+        res.redirect('/')
     })
 });
 
