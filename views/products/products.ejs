@@ -22,9 +22,36 @@
         </div>
     </nav>
 
-    <pre>
-        <%= result %>
-    </pre>
+    <div class="container">
+        <div class="row p-5">
+            <!-- products -->
+            <% for(let item of result) {%>
+
+                <div class="col-md-4">
+                    <div class="p-4">
+                        <div class="card">
+                            <img src="<%= item.cover %>" class="card-img-top" alt="<%= item.category %> img">
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    <%=item.name %>
+                                </h3>
+                                <p class="card-text">
+                                    <%= item.category %>
+                                </p>
+                                <p class="card-text">
+                                    $<%= item.price %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <% } %>
+
+        </div>
+    </div>
 
 
     <%- include('../partials/footer.ejs') %>
