@@ -51,6 +51,50 @@
                 <% } %>
 
         </div>
+        <div class="row">
+            <% if(pages) { %>
+                <nav class="mx-auto">
+                    <ul class="pagination">
+                        <!-- First-Page -->
+                        <% if(current===1) { %>
+                            <li class="page-item disabled">
+                                <a href="#" class="page-link">First Page</a>
+                            </li>
+                            <% } else{%>
+                                <li class="page-item">
+                                    <a href="/products/1" class="page-link">First</a>
+                                </li>
+                                <% } %>
+                                    <!-- First-Page-End -->
+
+                                    <!-- Pages -->
+
+
+
+
+
+
+
+
+
+
+                                    <!-- Last Page -->
+                                    <% if(current===pages) { %>
+
+                                        <li class="page-item disabled">
+                                            <a href="#" class="page-link">Last Page</a>
+                                        </li>
+
+                                        <% } else{ %>
+                                            <li class="page-item">
+                                                <a href="/products/<%= pages %>" class="page-link">Last</a>
+                                            </li>
+                                            <% } %>
+                    </ul>
+                </nav>
+
+                <% } %>
+        </div>
     </div>
 
 
